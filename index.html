@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+#product{
+justify-content: center;
+gap: 20px;
+
+}
+#product input{
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 30px;
+   
+  
+}
+#fi{
+    border: 1px solid white;
+}
+
+#product select{
+
+margin-top: 20px;
+}
+h1{
+    font-size: 60px;
+}
+label{
+    font-size: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Admin Panel Dashboard</h1>
+     <form onsubmit="productInfo(event)" id="product">
+        <label for="">Product Name:
+            <input type="text" id="name" required><br>
+
+
+        </label>
+
+        <label for="">Category:
+            <input type="text" id="category" required><br>
+
+            
+        </label>
+        <label for="">Image url:
+
+            <input type="text" id="image" required><br>
+
+        </label>
+        <label for="">Price:
+            <input type="number" id="price" required><br>
+
+            
+        </label>
+        <label for="">Gender:
+            <select name="gender" id="gender" required><br>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+    </select><br>
+            
+        </label>
+        <label for="">Sold:
+<input type="checkbox" id="sold" checked><br>
+        </label>
+               <a href="product.html"><input type="submit" id="#add"></a> <br>
+    
+        </form>
+
+    </center>
+  
+</body>
+</html>
+<script src="index.js"></script>

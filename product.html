@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            height: auto;
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            /* border: 1px solid red; */
+            text-align: center;
+            gap: 30px;
+
+        }
+        #container>div{
+            border: 1px solid black;
+
+        }
+        img{
+            height: 50%;
+            width:100% ;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+
+var productdata=JSON.parse(localStorage.getItem("Products"));
+    console.log(productdata);
+
+    productdata.map(function(ele,index){
+        var box=document.createElement("div");
+
+        var name=document.createElement("h2");
+        name.innerText=ele.name;
+
+        var categary=document.createElement("h2");
+        categary.innerText=ele.category;
+
+        var gender=document.createElement("h2");
+        gender.innerText=ele.gender;
+
+        var image=document.createElement("img");
+        image.src=ele.image;
+
+        var price=document.createElement("h2");
+        price.innerText=ele.price;
+        
+        var sold=document.createElement("button");
+        sold.innerText="Sold";
+        sold.addEventListener("click",function(){
+            sold(ele,index,productdata);
+        });
+
+       
+      
+        var btn=document.createElement("button");
+        btn.innerText="Remove"
+        btn.addEventListener("click",function(){
+            removeItem(ele,index);
+        });
+        
+        
+       box.append(image,name,categary,gender,price,sold,btn);
+       document.querySelector("#container").append(box);
+
+    })
+
+
+    function removeItem(ele,index){
+        console.log(ele,index);
+        productdata.splice(index,1);
+        console.log(productdata);
+        localStorage.setItem("Products",JSON.stringify(productdata));
+        window.location.reload();
+    }
+
+
+    function sold(ele,index,productdata){
+        if(ele.sold=="False"){
+            // sold.style.backgroundcolor="green";
+            productdata[index].sold="true"
+        }
+    }
+</script>
